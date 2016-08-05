@@ -183,7 +183,6 @@ class List extends Component {
           //成功
         }
       });
-
   }
 
 //生成随机ID：GUID

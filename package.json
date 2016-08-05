@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "react": "15.2.1",
-    "react-native": "0.30.0"
+    "react-native": "0.30.0",
+    "react-native-side-menu": "^0.20.0",
+    "react-native-swiper": "^1.4.8",
+    "react-native-tab-navigator": "^0.3.2"
   }
 }
