@@ -32,18 +32,18 @@ class orderList extends Component {
 
   render() {
     if (!this.state.loaded) {
-      return this.renderLoadingView();
+      return this._renderLoadingView();
     }
 
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={this.renderList.bind(this)}
+        renderRow={this._renderList.bind(this)}
         style={styles.listView}
         />
     );
   }
-  renderLoadingView() {
+  _renderLoadingView() {
     return (
       <View style={styles.container}>
         <ActivityIndicatorIOS
@@ -54,7 +54,7 @@ class orderList extends Component {
       </View>
     )
   }
-  renderList(lists) {
+  _renderList(lists) {
     // console.log(lists);
     return (  
         <TouchableOpacity style={styles.container} 
@@ -76,17 +76,18 @@ class orderList extends Component {
     );
   }
   _gotoView(lists) {
-    console.log("====", lists);
+    // console.log("________________", lists);
     this.props.navigator.push({
       component: Detail,
       title: '订单详情',
+      allDatas:lists,
     });
   }
   componentDidMount() {
-    this.fetchData();
+    this._fetchData();
   }
 
-  fetchData() {
+  _fetchData() {
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(dataList.lists),
       loaded: true,
@@ -94,17 +95,6 @@ class orderList extends Component {
   }
 }
 
-
-// class Detail extends Component{
-//   render() {
-//     return(
-//       <ScrollView style={styles.container}>
-//         <Text>详情页</Text>
-//         <Text>尽管信息很少，但这就是详情页</Text>
-//       </ScrollView>
-//     );
-//   }
-// }
 
 
 const styles = StyleSheet.create({
