@@ -13,10 +13,11 @@ import {
   ListView,
   ActivityIndicatorIOS,
   TouchableOpacity,
+  ScrollView
 } from 'react-native';
 
 import dataList from '../DataList.js';
-
+import Detail from './Detail.js';
 
 class orderList extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class orderList extends Component {
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={this.renderList}
+        renderRow={this.renderList.bind(this)}
         style={styles.listView}
         />
     );
@@ -53,11 +54,11 @@ class orderList extends Component {
       </View>
     )
   }
-//onPress={this._gotoView.bind(this)}
   renderList(lists) {
+    // console.log(lists);
     return (  
         <TouchableOpacity style={styles.container} 
-           >
+           onPress={this._gotoView.bind(this, lists)}>
           <View style={styles.leftContainer}>
             <Text style={styles.title} >{lists.id}</Text>
             <Text style={styles.text} >{lists.transport.fromWhere}</Text>
@@ -74,14 +75,11 @@ class orderList extends Component {
         </TouchableOpacity>
     );
   }
-  _gotoView() {
+  _gotoView(lists) {
+    console.log("====", lists);
     this.props.navigator.push({
       component: Detail,
-      title: '邮轮详情',
-      rightButtonTitle: '购物车',
-      onRightButtonPress: function(){
-        alert('进入我的购物车');
-      }
+      title: '订单详情',
     });
   }
   componentDidMount() {
@@ -97,16 +95,16 @@ class orderList extends Component {
 }
 
 
-class Detail extends Component{
-  render() {
-    return(
-      <ScrollView style={styles.container}>
-        <Text>详情页</Text>
-        <Text>尽管信息很少，但这就是详情页</Text>
-      </ScrollView>
-    );
-  }
-}
+// class Detail extends Component{
+//   render() {
+//     return(
+//       <ScrollView style={styles.container}>
+//         <Text>详情页</Text>
+//         <Text>尽管信息很少，但这就是详情页</Text>
+//       </ScrollView>
+//     );
+//   }
+// }
 
 
 const styles = StyleSheet.create({
