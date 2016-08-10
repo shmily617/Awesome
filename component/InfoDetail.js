@@ -27,9 +27,14 @@ class InfoDetail extends Component {
           <Text style={styles.text}>18500132617</Text>
         </View>
         <View style={styles.body}>
-          <ItemCell navigator={this.props.navigator} title="关于我们" icon="ios-alert" color="#4F8EF7"/>
-          <ItemCell navigator={this.props.navigator} title="用户设置" icon="ios-heart" color="#4F8EF7"/>
-          <ItemCell navigator={this.props.navigator} title="意见反馈" icon="md-chatbubbles" color="#4F8EF7"/>
+          <ItemCell navigator={this.props.navigator} title="关于我们" 
+          icon="ios-alert" color="#4F8EF7" />
+          <ItemCell navigator={this.props.navigator} title="用户设置" 
+          icon="ios-heart" color="#4F8EF7" />
+          <ItemCell navigator={this.props.navigator} title="意见反馈" 
+          icon="md-chatbubbles" color="#4F8EF7" />
+          <ItemCell navigator={this.props.navigator} title="地理位置" 
+          icon="ios-locate" color="#4F8EF7"/>
         </View>
         <TouchableOpacity style={styles.footer}>
           <Text style={styles.textFooter}>注销</Text>

@@ -15,7 +15,7 @@ import {
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import About from './About.js';
-
+import Location from './Location.js';
 class ItemCell extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,7 @@ class ItemCell extends Component {
     return (
       <View style={{ flex: 1 }}>
         <TouchableOpacity style={styles.flex}
-          onPress={this._gotoView.bind(this,this.props.title) }>
+          onPress={this._gotoView.bind(this, this.props.title) }>
           <View style={styles.left}>
             <Icon name={this.props.icon} size={30} color={this.props.color}/>
             <Text style={styles.text}>{this.props.title}</Text>
@@ -38,12 +38,20 @@ class ItemCell extends Component {
       </View >
     );
   }
-  _gotoView(title, component) {
-    this.props.navigator.push({
-      component: About,
-      title: title,
-    })
+  _gotoView(title) {
+    if (title == '地理位置') {
+      this.props.navigator.push({
+        component: Location,
+        title: title,
+      });
+    } else {
+      this.props.navigator.push({
+        component: About,
+        title: title,
+      });
+    }
   }
+
 }
 
 const styles = StyleSheet.create({
