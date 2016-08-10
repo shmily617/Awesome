@@ -52,7 +52,7 @@ class Awesome extends Component {
           <BluetoothPage></BluetoothPage>
         </Icon.TabBarItem>
         <Icon.TabBarItem
-          title="个人信息"
+          title="个人中心"
           iconName="user"
           selectedIconName="user"
           onPress={this.select.bind(this, 'info')} 
