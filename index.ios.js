@@ -10,14 +10,17 @@ import {
   StyleSheet,
   Text,
   View,
-  TabBarIOS
+  TabBarIOS,
+  ScrollView,
+  Image
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const BillPage = require('./component/BillPage');
-const BluetoothPage = require('./component/BluetoothPage');
-const InfoPage = require('./component/InfoPage');
+const Yuanqi = require('./Yuanqi');
+var Dimensions = require('Dimensions')
+var width = Dimensions.get('window').width;
+var height = Dimensions.get('window').height - 70;
 
 class Awesome extends Component {
   constructor () {
@@ -36,28 +39,42 @@ class Awesome extends Component {
     return (
       <TabBarIOS>
         <Icon.TabBarItem
-          title="运单列表"
-          iconName="file-text-o"
-          selectedIconName="file-text"
+          title="精选"
+          iconName="ios-home-outline"
+          selectedIconName="ios-home"
           onPress={this.select.bind(this, 'bill')} 
           selected={this.state.tab === 'bill'}>
-          <BillPage></BillPage>
+          <Yuanqi></Yuanqi>
         </Icon.TabBarItem>
         <Icon.TabBarItem
-          title="蓝牙功能"
-          iconName="bluetooth-b"
-          selectedIconName="bluetooth"
+          title="发现"
+          iconName="ios-eye-outline"
+          selectedIconName="ios-eye"
           onPress={this.select.bind(this, 'bluetooth')} 
           selected={this.state.tab === 'bluetooth'}>
-          <BluetoothPage></BluetoothPage>
+          <ScrollView style={styles.flex}>
+            <Image style={{width:width, height:height}} source={require("./Img/soon.jpg")}/>            
+          </ScrollView>
         </Icon.TabBarItem>
         <Icon.TabBarItem
-          title="个人中心"
-          iconName="user"
-          selectedIconName="user"
+          title="购物车"
+          iconName="ios-cart-outline"
+          selectedIconName="ios-cart"
+          onPress={this.select.bind(this, 'cart')} 
+          selected={this.state.tab === 'cart'}>
+          <ScrollView style={styles.flex}>
+            <Image style={{width:width, height:height}} source={require("./Img/soon.jpg")}/>            
+          </ScrollView>
+        </Icon.TabBarItem>
+        <Icon.TabBarItem
+          title="我的"
+          iconName="ios-contact-outline"
+          selectedIconName="ios-contact"
           onPress={this.select.bind(this, 'info')} 
           selected={this.state.tab === 'info'}>
-          <InfoPage></InfoPage>
+          <ScrollView style={styles.flex}>
+            <Image style={{width:width, height:height}} source={require("./Img/soon.jpg")}/>            
+          </ScrollView>
         </Icon.TabBarItem>
       </TabBarIOS>
     );
