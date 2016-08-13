@@ -18,6 +18,7 @@ import {
 
 import dataList from '../DataList.js';
 import Detail from './Detail.js';
+import LoadingView from './LoadingView.js';
 
 class orderList extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class orderList extends Component {
 
   render() {
     if (!this.state.loaded) {
-      return this._renderLoadingView();
+      return <LoadingView />;
     }
 
     return (
@@ -43,17 +44,17 @@ class orderList extends Component {
         />
     );
   }
-  _renderLoadingView() {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicatorIOS
-          animating={!this.state.loaded}
-          style={[styles.activityIndicator, { height: 80 }]}
-          size="large"
-          />
-      </View>
-    )
-  }
+  // _renderLoadingView() {
+  //   return (
+  //     <View style={styles.container}>
+  //       <ActivityIndicatorIOS
+  //         animating={!this.state.loaded}
+  //         style={[styles.activityIndicator, { height: 80 }]}
+  //         size="large"
+  //         />
+  //     </View>
+  //   )
+  // }
   _renderList(lists) {
     // console.log(lists);
     return (  

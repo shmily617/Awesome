@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 
 import Curve from './Curve.js';
-
+import LoadingView from './LoadingView.js';
 
 class Detail extends Component {
   constructor(props) {
@@ -33,9 +33,9 @@ class Detail extends Component {
   }
 
   render() {
-    // if (!this.state.loaded) {
-    //   return this.renderLoadingView();
-    // }
+    if (!this.state.loaded) {
+      return <LoadingView />;
+    }
 
     return (
       <ScrollView>
@@ -79,17 +79,17 @@ class Detail extends Component {
 
 
 
-  renderLoadingView() {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicatorIOS
-          animating={!this.state.loaded}
-          style={[styles.activityIndicator, { height: 80 }]}
-          size="large"
-          />
-      </View>
-    )
-  }
+  // renderLoadingView() {
+  //   return (
+  //     <View style={styles.container}>
+  //       <ActivityIndicatorIOS
+  //         animating={!this.state.loaded}
+  //         style={[styles.activityIndicator, { height: 80 }]}
+  //         size="large"
+  //         />
+  //     </View>
+  //   )
+  // }
 
   _renderList(lists) {
     return (
